@@ -1,61 +1,55 @@
+
 document.addEventListener('DOMContentLoaded', () => {
-    const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
-    let usuario = localStorage.getItem('usuario') || null;
+    const BASE_URL = 'https://api.jikan.moe/v4';
 
-    const carritoContainer = document.querySelector('.header-cart-items');
-    const userModal = document.getElementById('user-modal');
-    const userNameInput = document.getElementById('user-name');
-    const saveUserButton = document.getElementById('save-user');
-
-    function saveToLocalStorage(key, data) {
-        localStorage.setItem(key, JSON.stringify(data));
-    }
-
-    function renderCarrito() {
-        carritoContainer.innerHTML = '';
-        carrito.forEach(producto => {
-            const item = document.createElement('div');
-            item.innerHTML = `<p>${producto.name} - $${producto.price}</p>`;
-            carritoContainer.appendChild(item);
-        });
-    }
-
-    function checkUsuario() {
-        if (!usuario) {
-            userModal.style.display = 'block';
+    
+    async function searchAnime(title) {
+        try {
+            const response = await axios.get(${BASE_URL}/anime, {
+                params: { q: title }
+            });
+            displayAnimes(response.data.data);
+        } catch (error) {
+            console.error('Error al buscar el anime:', error);
         }
     }
 
-    function closeUserModal() {
-        userModal.style.display = 'none';
+    function displayAnimes(animes) {
+        const animeList = document.getElementById('anime-list');
+        animeList.innerHTML = '';
+        animes.forEach(anime => {
+            const price = (Math.random() * 20 + 10).toFixed(2); 
+            const animeItem = document.createElement('div');
+            animeItem.innerHTML = `
+                <h3>${anime.title}</h3>
+                <img src="${anime.images.jpg.image_url}" alt="${anime.title}">
+                <p>${anime.synopsis}</p>
+                <p><strong>Precio: $${price}</strong></p>
+                <button class="add-to-cart" data-title="${anime.title}" data-price="${price}">Agregar al carrito</button>
+            `;
+            animeList.appendChild(animeItem);
+        });
+
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', (event) => {
+                const title = event.target.dataset.title;
+                const price = event.target.dataset.price;
+                addToCart(title, price);
+            });
+        });
     }
 
-    document.querySelectorAll('.producto-img').forEach(img => {
-        img.addEventListener('click', () => {
-            checkUsuario();
-        });
+    function addToCart(animeTitle, animePrice) {
+        const cartItems = document.getElementById('cart-items');
+        const cartItem = document.createElement('li');
+        cartItem.textContent = ${animeTitle} - $${animePrice};
+        cartItems.appendChild(cartItem);
+    }
+
+    document.getElementById('search-button').addEventListener('click', () => {
+        const searchInput = document.getElementById('search-input').value;
+        searchAnime(searchInput);
     });
 
-    document.querySelectorAll('.carrito').forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            const producto = e.target.closest('.productos-tiendas');
-            const id = producto.getAttribute('data-id');
-            const name = producto.getAttribute('data-name');
-            const price = producto.getAttribute('data-price');
-            carrito.push({ id, name, price });
-            saveToLocalStorage('carrito', carrito);
-            renderCarrito();
-        });
-    });
-
-    saveUserButton.addEventListener('click', () => {
-        usuario = userNameInput.value.trim();
-        if (usuario) {
-            localStorage.setItem('usuario', usuario);
-            closeUserModal();
-        }
-    });
-
-    renderCarrito();
-    checkUsuario();
+    searchAnime('Naruto');
 });

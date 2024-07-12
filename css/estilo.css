@@ -2,122 +2,56 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background: linear-gradient(to bottom, rgb(208, 19, 255), black); /* Fondo degradado */
+    background-color: #f4f4f4;
 }
 
-.header-cart {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    background-color: #fff;
-    padding: 10px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-}
-
-.header-cart-icon {
-    width: 30px;
-    height: 30px;
-    cursor: pointer;
-}
-
-.header-cart-items {
-    margin-left: 10px;
-}
-
-.main-tienda {
-    max-width: 100%;
-    padding: 0;
-    border-radius: 10px; 
-}
-
-.h1-tienda {
-    text-align: center;
-    margin-bottom: 30px;
-    font-size: 24px; 
-    color: #f7efef; 
-}
-
-.categoria {
-    margin-bottom: 40px;
-}
-
-.h2-tienda {
-    margin-bottom: 20px;
-    font-size: 20px; 
-    color: #f7f3f3; 
-}
-
-.productos-tienda {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); 
-    gap: 20px; 
-}
-
-.productos-tiendas {
-    background-color: #fff; 
-    padding: 10px; 
-    border-radius: 8px; 
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); 
-    position: relative;
-}
-
-.carrito, .favorito {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100px;
-    height: 30px;
-    cursor: pointer;
-    margin-top: 10px;
-    border: none;
-    background-color: #ff4747;
+header {
+    background-color: #333;
     color: #fff;
-    border-radius: 5px;
-}
-
-.favorito {
-    background-color: transparent;
-    color: red;
-    font-size: 20px;
-    position: absolute;
-    top: 10px;
-    right: 10px;
-}
-
-.productos-tiendas img {
-    width: 100%; 
-    border-radius: 5px; 
-}
-
-.productos-tiendas p {
-    margin-top: 10px; 
-    text-align: center; 
-}
-
-.user-modal {
-    display: none;
-    position: fixed;
-    z-index: 1000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.4);
-}
-
-.user-modal-content {
-    background-color: #fefefe;
-    margin: 15% auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-    max-width: 300px;
+    padding: 1rem 0;
     text-align: center;
 }
 
-.user-modal input, .user-modal button {
-    width: 80%;
-    margin: 10px 0;
-    padding: 10px;
+main {
+    display: flex;
+    justify-content: space-between;
+    padding: 2rem;
+}
+
+#anime-list, #cart {
+    width: 45%;
+}
+
+#anime-list {
+    background-color: #fff;
+    padding: 1rem;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+#cart {
+    background-color: #fff;
+    padding: 1rem;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+#cart ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+#cart ul li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #ccc;
+}
+
+button {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #555;
 }

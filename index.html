@@ -3,114 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="preparado para conocer el mundo del anime">
-    <meta name="keywords" content="anime, manga, dragon ball z, one piece">
-    <meta name="robots" content="index">
-    <meta name="author" content="CrisLopezR">
-    <meta name="copyright" content="cristian">
-
+    <title>Tienda de Artículos de Anime</title>
     <link rel="stylesheet" href="./css/estilo.css">
-    <title>Tienda</title>
 </head>
-
-<body class="fondo-pagina">
+<body>
     <header>
-        <div class="header-cart">
-            <img src="../assets/img/carrito de compras.png" alt="Carrito" class="header-cart-icon">
-            <div class="header-cart-items"></div>
-        </div>
+        <h1>Tienda de Artículos de Anime</h1>
+        <input type="text" id="search-input" placeholder="Buscar anime...">
+        <button id="search-button">Buscar</button>
     </header>
-    <main class="main-tienda">
-        <h1 class="h1-tienda">Conoce el mejor catálogo de posibles compras relacionando precio, calidad y sobre todo dificultad adquisitiva.</h1>
-
-        <div class="categoria">
-            <h2 class="h2-tienda">Funkos animados</h2>
-            <div class="productos-tienda">
-                <div class="productos-tiendas" data-id="1" data-name="Funk Zoro" data-price="20.00">
-                    <img class="producto-img" src="../assets/img/funk zoro.png" alt="Funk Zoro">
-                    <p>$20.00</p>
-                    <button class="carrito">Agregar al carrito</button>
-                    <button class="favorito">❤</button>
-                </div>
-                <div class="productos-tiendas" data-id="2" data-name="Funk Gojo" data-price="25.00">
-                    <img class="producto-img" src="../assets/img/funk gojo.png" alt="Funk Gojo">
-                    <p>$25.00</p>
-                    <button class="carrito">Agregar al carrito</button>
-                    <button class="favorito">❤</button>
-                </div>
-                <div class="productos-tiendas" data-id="3" data-name="Funk Naruto" data-price="30.00">
-                    <img class="producto-img" src="../assets/img/funk naruto.png" alt="Funk Naruto">
-                    <p>$30.00</p>
-                    <button class="carrito">Agregar al carrito</button>
-                    <button class="favorito">❤</button>
-                </div>
-            </div>
-        </div>
-
-        <div class="categoria">
-            <h2 class="h2-tienda">Vestimenta/accesorios</h2>
-            <div class="productos-tienda">
-                <div class="productos-tiendas" data-id="4" data-name="Zoro Vestimenta" data-price="40.00">
-                    <img class="producto-img" src="../assets/img/zoro vestimenta.png" alt="Zoro Vestimenta">
-                    <p>$40.00</p>
-                    <button class="carrito">Agregar al carrito</button>
-                    <button class="favorito">❤</button>
-                </div>
-                <div class="productos-tiendas" data-id="5" data-name="Goku Vestimenta" data-price="35.00">
-                    <img class="producto-img" src="../assets/img/goku vestimenta.png" alt="Goku Vestimenta">
-                    <p>$35.00</p>
-                    <button class="carrito">Agregar al carrito</button>
-                    <button class="favorito">❤</button>
-                </div>
-                <div class="productos-tiendas" data-id="6" data-name="Espada Accesorio" data-price="50.00">
-                    <img class="producto-img" src="../assets/img/espada accesorio.png" alt="Espada Accesorio">
-                    <p>$50.00</p>
-                    <button class="carrito">Agregar al carrito</button>
-                    <button class="favorito">❤</button>
-                </div>
-            </div>
-        </div>
-
-        <div class="categoria">
-            <h2 class="h2-tienda">Mangas</h2>
-            <div class="productos-tienda">
-                <div class="productos-tiendas" data-id="7" data-name="Black Clover Manga" data-price="10.00">
-                    <img class="producto-img" src="../assets/img/black clover manga.png" alt="Black Clover Manga">
-                    <p>$10.00</p>
-                    <button class="carrito">Agregar al carrito</button>
-                    <button class="favorito">❤</button>
-                </div>
-                <div class="productos-tiendas" data-id="8" data-name="Boku no Hero Manga" data-price="15.00">
-                    <img class="producto-img" src="../assets/img/boku no hero manga.png" alt="Boku no Hero Manga">
-                    <p>$15.00</p>
-                    <button class="carrito">Agregar al carrito</button>
-                    <button class="favorito">❤</button>
-                </div>
-                <div class="productos-tiendas" data-id="9" data-name="Full Metal Manga" data-price="12.00">
-                    <img class="producto-img" src="../assets/img/full metal manga.png" alt="Full Metal Manga">
-                    <p>$12.00</p>
-                    <button class="carrito">Agregar al carrito</button>
-                    <button class="favorito">❤</button>
-                </div>
-            </div>
-        </div>
-
-        <div id="user-modal" class="user-modal">
-            <div class="user-modal-content">
-                <h2>Bienvenido</h2>
-                <p>Por favor, introduce tu nombre:</p>
-                <input type="text" id="user-name" placeholder="Nombre">
-                <button id="save-user">Guardar</button>
-            </div>
-        </div>
+    <main>
+        <section id="anime-list">
+        </section>
+        <section id="cart">
+            <h2>Carrito de Compras</h2>
+            <ul id="cart-items">
+            </ul>
+        </section>
     </main>
-
-    <footer>
-        <div class="footer">
-            <p>Nos reservamos derecho de autor</p>
-        </div>
-    </footer>
-
     <script src="./script.js/tinda.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
 </body>
 </html>
