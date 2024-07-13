@@ -1,11 +1,9 @@
-
 document.addEventListener('DOMContentLoaded', () => {
     const BASE_URL = 'https://api.jikan.moe/v4';
 
-    
     async function searchAnime(title) {
         try {
-            const response = await axios.get(${BASE_URL}/anime, {
+            const response = await axios.get(`${BASE_URL}/anime`, {
                 params: { q: title }
             });
             displayAnimes(response.data.data);
@@ -42,8 +40,15 @@ document.addEventListener('DOMContentLoaded', () => {
     function addToCart(animeTitle, animePrice) {
         const cartItems = document.getElementById('cart-items');
         const cartItem = document.createElement('li');
-        cartItem.textContent = ${animeTitle} - $${animePrice};
+        cartItem.innerHTML = `
+            ${animeTitle} - $${animePrice}
+            <button class="remove-from-cart" data-title="${animeTitle}">Eliminar</button>
+        `;
         cartItems.appendChild(cartItem);
+
+        cartItem.querySelector('.remove-from-cart').addEventListener('click', (event) => {
+            event.target.parentElement.remove();
+        });
     }
 
     document.getElementById('search-button').addEventListener('click', () => {
